@@ -29,7 +29,6 @@ jest.mock('../src/Subscription', () => {
 
 describe("LockController", () => {
   it("locks and then unlocks", () => {
-    // TODO: finish writing this test
     const m = new MassiveObject("Id1");
     const connection: IMassiveDbConnection = {
       session: {},
