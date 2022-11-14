@@ -2,6 +2,30 @@ import { IMassiveDbConnection } from '../src/IMassiveDbConnection';
 import { MassiveLocation } from '../src/IMassiveLocation';
 import { MassiveObject } from '../src/IMassiveObject';
 import { LockController } from '../src/LockController';
+class TestSubscription {
+  publishingEnabled!: boolean;
+
+  delete() {
+    this.publishingEnabled = false;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  registerCallback() {
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  create() {
+  }
+}
+
+
+jest.mock('../src/Subscription', () => {
+  return {
+    Subscription: jest.fn().mockImplementation(() => {
+      return new TestSubscription()
+    })
+  }
+});
 
 describe("LockController", () => {
   it("locks and then unlocks", () => {

@@ -8,8 +8,8 @@ export class LockController {
   private _lockedItems: Record<string, IMassiveVariant[]> = {};
 
   constructor(private readonly _connection: IMassiveDbConnection) {
-    // register a listener (Subscription) for changes in the Massive Database
-    this._subscription = new Subscription(_connection.session);
+
+    this._subscription = new Subscription(_connection.session); /* ? */
     this._subscription.publishingEnabled = true;
     this._subscription.publishingInterval = 500;
     this._subscription.registerCallback(this.subscriptionDataChange.bind(this));
