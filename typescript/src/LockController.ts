@@ -9,7 +9,7 @@ export class LockController {
 
   constructor(private readonly _connection: IMassiveDbConnection) {
 
-    this._subscription = new Subscription(_connection.session); /* ? */
+    this._subscription = new Subscription(_connection.session);
     this._subscription.publishingEnabled = true;
     this._subscription.publishingInterval = 500;
     this._subscription.registerCallback(this.subscriptionDataChange.bind(this));
